@@ -1,0 +1,49 @@
+.calendar-container {
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.react-calendar {
+    flex: 1;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+.react-calendar__month-view, .react-calendar__month-view__days {
+    flex: 1;
+}
+
+.react-calendar__month-view>div>div {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+.react-calendar__month-view>div {
+    height: 100% !important;
+    align-items: stretch !important;
+}
+
+.day-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.event-viewer {
+    width: calc(100% - 12px);
+    background-color: lightblue;
+    border-radius: 4px;
+    border: 1px rgb(76, 188, 240) solid;
+    margin: 5px;
+    align-self: flex-end;
+    height: 40%;
+}

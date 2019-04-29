@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import Calendar from 'react-calendar';
+import "./reset.css"
+import CalendarManager from "./Views/Calendar/CalendarManager"
 
 function App() {
   return (
     <div className="App">
-      <header>Hi</header>
-      <Calendar value={new Date()}/>
+      <section className="calendar-section">
+        <CalendarManager />
+      </section>
+      <section className="upcoming-section">
+      </section>
     </div>
   );
 }

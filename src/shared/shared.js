@@ -1,13 +1,4 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-
-const app = express();
-
-app.use(cors());
-app.use(bodyParser.json());
-
-class SimpleDate {
+module.exports.SimpleDate = class SimpleDate {
     constructor(year, month, day, hour = 12, minute = 0) {
         this.year = Number(year);
         this.month = Number(month);
@@ -20,6 +11,7 @@ class SimpleDate {
         return new Date(this.year, this.month, this.day, this.hour, this.minute);
     }
 }
+
 class EventItem {
     constructor(name, description, dueDate) {
         this.name = name;
@@ -62,29 +54,10 @@ class EventItem {
     }
 }
 
-const eventList = [];
-
-eventList.push(new EventItem("Test", "Just a test", new SimpleDate(2019, 4, 26)),
-    new EventItem("Test", "Just a test", new SimpleDate(2019, 5, 26)))
-
-const apiBase = "/api";
-
-app.get(`${apiBase}/overview/:year/:month`, (req, res, next) => {
-    res.send(
-        eventList.filter(e => e.matchMonthRange(req.params.year, req.params.month, req.query.range))
-        .map(e => ({name: e.name, dueDate: e.dueDate}))
-    )
-})
-
-app.get(`${apiBase}/upcoming/`, (req, res, next) => {
-    const currentTime = Date.now();
-
-    res.send(eventList.filter(e => e.dueDate.asDate() >= currentTime)
-        .map(e => ({name: e.name, dueDate: e.dueDate})));
-})
-
-const port = process.env.PORT || 8080;
-
-app.listen(port, () => {
-    console.log(`Running on port ${port}`);
-});
+module.exports.SimpleEvent = class SimpleEvent {
+    constructor(name, description, date) {
+        this.name = name;
+        this.description = description;
+        this.date = date;
+    }
+}
