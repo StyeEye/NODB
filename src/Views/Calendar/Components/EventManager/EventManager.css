@@ -1,0 +1,12 @@
+.event-viewer {
+    width: calc(100% - 10px);
+    background-color: lightblue;
+    border-radius: 4px;
+    border: 1px rgb(76, 188, 240) solid;
+    margin: 5px;
+    align-self: flex-end;
+    height: 40%;
+    min-height: 200px;
+    text-align: center;
+    padding: 5px;
+}

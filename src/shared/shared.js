@@ -10,13 +10,39 @@ module.exports.SimpleDate = class SimpleDate {
     asDate() {
         return new Date(this.year, this.month, this.day, this.hour, this.minute);
     }
+
+    matchesDateDay(day) {
+        return day.getFullYear() === this.year
+            && day.getMonth() === this.month
+            && day.getDate() === this.day
+    }
+
+    matchesDay(day) {
+        return day.year === this.year
+            && day.month === this.month
+            && day.day === this.day
+    }
+
+    simpleString() {
+        return `${this.year}-${("00" + (this.month + 1)).slice(-2)}-${("00" + this.day).slice(-2)}`
+    }
+
+    fromObject(obj) {
+        this.year = obj.year;
+        this.month = obj.month;
+        this.day = obj.day;
+        this.hour = obj.hour;
+        this.minute = obj.minute;
+        return this;
+    }
 }
 
-class EventItem {
-    constructor(name, description, dueDate) {
+module.exports.EventItem = class EventItem {
+    constructor(name, description, dueDate, ID) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
+        this.ID = ID;
     }
 
     matchMonth(year, month) {
@@ -60,4 +86,10 @@ module.exports.SimpleEvent = class SimpleEvent {
         this.description = description;
         this.date = date;
     }
+}
+
+module.exports.daysMatch = (date1, date2) => {
+    return date1.getFullYear() === date2.getFullYear()
+        && date1.getMonth() === date2.getMonth()
+        && date1.getDate() === date2.getDate();
 }

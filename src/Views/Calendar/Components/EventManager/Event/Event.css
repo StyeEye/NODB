@@ -1,0 +1,15 @@
+.event {
+    border: 1px teal solid;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+}
+
+.event-title {
+    display: flex;
+    justify-content: center;
+}
+.event-title>h2 {
+    display: inline-block;
+    margin-right: 20px;
+    text-decoration: underline;
+}

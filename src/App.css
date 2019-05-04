@@ -4,6 +4,7 @@
 .calendar-section {
   position: relative;
   height: 100vh;
-  width: 60%;
+  width: 100%;
   background-color: lightgray;
+  overflow: auto;
 }
